@@ -1,0 +1,31 @@
+@API_HostAddress = https://localhost:5055
+
+###
+GET {{API_HostAddress}}/api/members/
+Accept: application/json
+
+###
+GET {{API_HostAddress}}/api/members/bob-id
+Accept: application/json
+
+###
+POST {{API_HostAddress}}/users/
+Content-Type: application/json
+
+{
+    "DisplayName": "Nosok Kakueran",
+    "Email": "nosokkakueran@gmail.com"
+}
+
+###
+
+PUT {{API_HostAddress}}/users/nosokkakueran@gmail.com
+Content-Type: application/json
+
+{
+    "DisplayName": "John Doe1",
+    "Email": "john.doe1@example.com"
+}
+
+###
+DELETE {{API_HostAddress}}/users/nosokkakueran@gmail.com
