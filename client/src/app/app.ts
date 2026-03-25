@@ -8,7 +8,7 @@ import { User } from '../models/account';
 
 @Component({
   selector: 'app-root',
-  imports: [RouterOutlet, Nav, Home],
+  imports: [RouterOutlet, Nav],
   templateUrl: './app.html',
   styleUrl: './app.css',
 })
