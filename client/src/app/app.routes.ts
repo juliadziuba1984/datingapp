@@ -5,6 +5,7 @@ import { MemberDetailes } from '../features/members/member-detailes/member-detai
 import { Lists } from '../features/lists/lists';
 import { Messages } from '../features/messages/messages';
 import { authGuard } from '../core/guards/auth-guard';
+import { NotFound } from '../features/not-found/not-found';
 
 export const routes: Routes = [
   {
@@ -34,6 +35,6 @@ export const routes: Routes = [
 
   {
     path: '**',
-    component: Home,
+    component: NotFound,
   },
 ];
