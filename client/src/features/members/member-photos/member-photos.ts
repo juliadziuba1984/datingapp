@@ -1,5 +1,5 @@
 import {Component, inject} from '@angular/core';
-import {MembersService} from '../../../core/services/members-service';
+import MembersService from '../../../core/services/members-service';
 import {Observable} from 'rxjs';
 import {Photo} from '../../../models/member';
 import {ActivatedRoute} from '@angular/router';

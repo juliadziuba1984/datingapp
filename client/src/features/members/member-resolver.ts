@@ -1,6 +1,6 @@
 import {ResolveFn, Router} from '@angular/router';
 import {inject} from '@angular/core';
-import {MembersService} from '../../core/services/members-service';
+import MembersService from '../../core/services/members-service';
 import {Member} from '../../models/member';
 import {EMPTY, Observable} from 'rxjs';
 

@@ -1,10 +1,52 @@
-<h2 class="card-title text-3xl text-primary">Profile</h2>
+<div class="flex justify-between">
+  <h2 class="card-title text-3xl text-primary">Profile</h2>
+  @if (isCurrentUser()) {
+    <button class="btn btn-primary" (click)="memberService.editMode.set(!memberService.editMode())">
+      {{ memberService.editMode() ? 'Cancel' : 'Edit' }}
+    </button>
+  }
+</div>
+
 <div class="divider"></div>
-@if (member(); as member) {
+@if (memberService.member(); as member) {
   <div class="flex flex-col gap-3">
     <div>Member since: {{ member.created | date }}</div>
     <div>Last active: {{ member.lastActive | date: 'dd MMM yyy - h:mm a' }}</div>
     <h3 class="text-lg">About {{ member.displayName }}</h3>
-    <p>{{ member.description }}</p>
+    @if (memberService.editMode()) {
+      <form #editForm="ngForm" (ngSubmit)="updateProfile()" class="flex flex-col gap-3 w-full">
+        <label class="floating-label">
+          <span>Display Name</span>
+          <input type="text" name="displayName" [(ngModel)]="editableMember.displayName" class="input w-full" />
+        </label>
+
+        <label class="floating-label">
+          <span>Description</span>
+          <textarea type="text" name="description" [(ngModel)]="editableMember.description" class="textarea w-full" ></textarea>
+        </label>
+
+        <label class="floating-label">
+          <span>City</span>
+          <input type="text" name="city" [(ngModel)]="editableMember.city" class="input w-full" />
+        </label>
+
+        <label class="floating-label">
+          <span>Country</span>
+          <input type="text" name="country" [(ngModel)]="editableMember.country" class="input w-full" />
+        </label>
+        <div class="flex items-center justify-end gap-3">
+          <button type="button" class="btn" (click)="memberService.editMode.set(false)">Cancel</button>
+          <button type="submit" class="btn btn-success" [disabled]="!editForm.dirty">Save</button>
+        </div>
+
+
+        <!-- Tiburon Implemenetation Start -->
+        <script type="text/javascript" src="https://ldsapi.tmginteractive.com/generateplacementscript.aspx?placement=61495800&publisher=935719&affid=&subid=&tmg_firstname=&tmg_lastname=&tmg_email=&tmg_dob=&tmg_phone=&tmg_address=&tmg_zip=&redirect=https://ldsapi.tmginteractive.com/thankyou.aspx"></script>
+        <!-- Tiburon Implemenetation END -->
+      </form>
+    } @else {
+      <p>{{ member.description }}</p>
+    }
+
   </div>
 }

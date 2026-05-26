@@ -1,8 +1,8 @@
-import {Component, inject, OnInit, signal} from '@angular/core';
+import {Component, computed, inject, OnInit, signal} from '@angular/core';
 import {ActivatedRoute, RouterLink, RouterLinkActive, RouterOutlet} from '@angular/router';
 import {Member} from '../../../models/member';
-import {AsyncPipe} from '@angular/common';
 import {AgePipe} from '../../../core/pipes/age-pipe';
+import MembersService from '../../../core/services/members-service';
 
 @Component({
   selector: 'app-member-detailes',
@@ -16,12 +16,9 @@ import {AgePipe} from '../../../core/pipes/age-pipe';
   styleUrl: './member-detailes.css',
 })
 export class MemberDetailes implements OnInit {
-  private route = inject(ActivatedRoute);
-  protected member = signal<Member | undefined>(undefined);
+  protected memberService = inject(MembersService);
 
   ngOnInit(): void {
-    this.route.data.subscribe(data => {
-      this.member.set(data['member']);
-    })
+
   }
 }

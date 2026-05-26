@@ -18,3 +18,5 @@ export type Photo = {
   memberId: string
 }
 
+export type EditableMember = Pick<Member, "displayName" | "city" | "country"> & Partial<Pick<Member, 'description'>>
+
